@@ -185,16 +185,42 @@ const Contact: React.FC = () => {
               <h3 className="text-xl font-bold text-gray-800 mb-4">Suivez-moi</h3>
               <div className="flex gap-4">
                 {[
-                  { name: 'LinkedIn', icon: '🔗', link: 'https://www.linkedin.com/in/s%C3%A9kou-kerfala-bangoura-338a89288/ ' },
-                  { name: 'GitHub', icon: '🐙', link: 'https://github.com/sekKerfBang ' },
-                  { name: 'Twitter', icon: '🐦', link: 'https://x.com/Kerfala1622823 ' },
+                  {
+                    name: 'Facebook',
+                    link: 'https://www.facebook.com/sekou.kerfala.bangoura/',
+                    icon: (
+                      <svg aria-hidden="true" viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor">
+                        <path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073c0 6.019 4.388 11.022 10.125 11.927v-8.437H7.078v-3.49h3.047V9.41c0-3.02 1.792-4.688 4.533-4.688 1.312 0 2.686.236 2.686.236v2.97h-1.513c-1.49 0-1.956.93-1.956 1.885v2.26h3.328l-.532 3.49h-2.796V24C19.612 23.095 24 18.092 24 12.073Z" />
+                      </svg>
+                    ),
+                  },
+                  {
+                    name: 'LinkedIn',
+                    link: 'https://www.linkedin.com/in/s%C3%A9kou-kerfala-bangoura-338a89288/',
+                    icon: (
+                      <svg aria-hidden="true" viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor">
+                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.85-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.354V9h3.414v1.561h.049c.476-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286ZM5.337 7.433a2.062 2.062 0 1 1 0-4.124 2.062 2.062 0 0 1 0 4.124ZM7.119 20.452H3.555V9h3.564v11.452ZM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003Z" />
+                      </svg>
+                    ),
+                  },
+                  {
+                    name: 'GitHub',
+                    link: 'https://github.com/sekKerfBang',
+                    icon: (
+                      <svg aria-hidden="true" viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor">
+                        <path d="M12 .9a11.1 11.1 0 0 0-3.51 21.63c.555.103.759-.241.759-.535 0-.264-.01-.964-.015-1.893-3.09.672-3.741-1.49-3.741-1.49-.505-1.284-1.233-1.626-1.233-1.626-1.009-.69.076-.676.076-.676 1.115.078 1.701 1.145 1.701 1.145.991 1.698 2.6 1.207 3.234.923.1-.718.388-1.208.705-1.486-2.467-.281-5.061-1.234-5.061-5.491 0-1.213.434-2.204 1.145-2.981-.115-.281-.496-1.412.108-2.943 0 0 .934-.299 3.06 1.139a10.65 10.65 0 0 1 5.57 0c2.125-1.438 3.057-1.139 3.057-1.139.606 1.531.225 2.662.111 2.943.713.777 1.142 1.768 1.142 2.981 0 4.268-2.598 5.207-5.073 5.483.399.344.753 1.02.753 2.055 0 1.484-.014 2.68-.014 3.044 0 .297.2.644.763.534A11.1 11.1 0 0 0 12 .9Z" />
+                      </svg>
+                    ),
+                  },
                 ].map(social => (
                   <a
                     key={social.name}
                     href={social.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center text-2xl hover:bg-blue-100 hover:scale-110 transition-all duration-300"
+                    aria-label={`Suivre sur ${social.name}`}
+                    title={social.name}
+                    className="flex h-12 w-12 items-center justify-center rounded-full bg-gray-100 text-gray-700 transition-all duration-300 hover:scale-110 hover:bg-blue-100 hover:text-blue-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
                   >
                     {social.icon}
                   </a>
