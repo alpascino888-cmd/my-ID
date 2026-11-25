@@ -67,6 +67,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'gmailapi_backend',
     
     'corsheaders',
     'rest_framework',
@@ -199,16 +200,33 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 # Email configuration
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = config('EMAIL_HOST', default='')
-EMAIL_PORT = config('EMAIL_PORT', default=465, cast=int)
-EMAIL_USE_TLS = config('EMAIL_USE_TLS', default=False, cast=bool)
-EMAIL_USE_SSL = config('EMAIL_USE_SSL', default=False, cast=bool)
-EMAIL_TIMEOUT = config('EMAIL_TIMEOUT', default=10, cast=int)
-EMAIL_HOST_USER = config('EMAIL_HOST_USER', default='')
-EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD', default='')
-DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL', default=EMAIL_HOST_USER)
-CONTACT_RECIPIENT_EMAIL = config('CONTACT_RECIPIENT_EMAIL', default=EMAIL_HOST_USER)
+
+# Utiliser le backend de l'API Gmail
+EMAIL_BACKEND = 'gmailapi_backend.mail.GmailBackend'
+
+# Les identifiants OAuth 2.0 de votre console Google Cloud
+GMAIL_API_CLIENT_ID = config('GMAIL_API_CLIENT_ID', default='')
+GMAIL_API_CLIENT_SECRET = config('GMAIL_API_CLIENT_SECRET', default='')
+
+# Le refresh token que vous allez générer à l'étape suivante
+GMAIL_API_REFRESH_TOKEN = config('GMAIL_API_REFRESH_TOKEN', default='')
+
+# Adresse e-mail de l'expéditeur (doit correspondre au compte Gmail utilisé)
+DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL', default='votre-email@gmail.com')
+
+# Adresse e-mail qui recevra les messages de contact
+CONTACT_RECIPIENT_EMAIL = config('CONTACT_RECIPIENT_EMAIL', default=DEFAULT_FROM_EMAIL)
+
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = config('EMAIL_HOST', default='')
+# EMAIL_PORT = config('EMAIL_PORT', default=465, cast=int)
+# EMAIL_USE_TLS = config('EMAIL_USE_TLS', default=False, cast=bool)
+# EMAIL_USE_SSL = config('EMAIL_USE_SSL', default=False, cast=bool)
+# EMAIL_TIMEOUT = config('EMAIL_TIMEOUT', default=10, cast=int)
+# EMAIL_HOST_USER = config('EMAIL_HOST_USER', default='')
+# EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD', default='')
+# DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL', default=EMAIL_HOST_USER)
+# CONTACT_RECIPIENT_EMAIL = config('CONTACT_RECIPIENT_EMAIL', default=EMAIL_HOST_USER)
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
