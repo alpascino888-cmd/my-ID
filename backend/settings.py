@@ -202,7 +202,7 @@ MEDIA_ROOT = BASE_DIR / 'media'
 # Email configuration
 
 # Remplacez votre ancien EMAIL_BACKEND
-EMAIL_BACKEND = config("EMAIL_BACKEND", default="anymail.backends.brevo.EmailBackend")
+EMAIL_BACKEND = "anymail.backends.brevo.EmailBackend"
 
 # Configurez votre clé API
 ANYMAIL = {
